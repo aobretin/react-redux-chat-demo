@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {store} from './store';
-import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+import App from './containers/App';
+import registerServiceWorker from './registerServiceWorker';
+import store from './store';
 
-const render = () => ReactDOM.render(<App />, document.getElementById('root'));
+function fancyLog() {
+  console.log("%c Rendered with 👉 👉👇", "background: purple; color: #FFF");
+  console.log(store.getState());
+}
+
+const render = () => {
+  fancyLog();
+  ReactDOM.render(<App />, document.getElementById('root'));
+}
 render();
 
 store.subscribe(render);
-
 registerServiceWorker();
